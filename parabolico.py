@@ -29,8 +29,8 @@ speed = vector(0, 0)
 targets = []
 count = 0
 
-def counting(count):
-    count += 1
+def changeGravity(value):
+    speed.y = value / (value/100)
 
 def tap(x, y):
     "Respond to screen tap."
@@ -98,6 +98,10 @@ def move():
 
 setup(420, 420, 370, 0)
 hideturtle()
+listen()
+onkey(lambda: changeGravity(400), 'a')
+onkey(lambda: changeGravity(200), 's')
+onkey(lambda: changeGravity(50), 'd')
 up()
 tracer(False)
 onscreenclick(tap)
