@@ -7,17 +7,30 @@ Exercises
 3. Apply gravity to the targets.
 4. Change the speed of the ball.
 
+Integrantes:
+Karen Lizette Rodríguez Hernández - A01197734
+Jorge Eduardo Arias Arias - A01570549
+Hernán Salinas Ibarra - A01570409
+
+15/09/2021
+
+Exercises marked by ***ejercicio realizado***
+
 """
 
 from random import randrange
 from turtle import *
+from typing import Sized
 
 from freegames import vector
 
 ball = vector(-200, -200)
 speed = vector(0, 0)
 targets = []
+count = 0
 
+def counting(count):
+    count += 1
 
 def tap(x, y):
     "Respond to screen tap."
@@ -47,7 +60,6 @@ def draw():
 
     update()
 
-
 def move():
     "Move ball and targets."
     if randrange(40) == 0:
@@ -68,8 +80,14 @@ def move():
     for target in dupe:
         if abs(target - ball) > 13:
             targets.append(target)
-
     draw()
+    
+    if len(dupe) != len(targets):
+        global count
+        diferencia = len(dupe)-len(targets)
+        count += diferencia
+        style = ('Courier', 30, 'bold')
+        write(count, font=style, align='right')
 
     for target in targets:
         if not inside(target):
