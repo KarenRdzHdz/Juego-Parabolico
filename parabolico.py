@@ -26,8 +26,13 @@ from freegames import vector
 
 ball = vector(-200, -200)
 speed = vector(0, 0)
+s = 200
 targets = []
 count = 0
+
+def changeSpeed(sp):                                # ***Exercise 4: change speed***
+    global s
+    s = sp
 
 def counting(count):
     count += 1
@@ -69,6 +74,7 @@ def move():
 
     for target in targets:
         target.x -= 0.5
+        target.y -= 0.5                             # ***Exercise 3: add gravity to targets***
 
     if inside(ball):
         speed.y -= 0.35
@@ -93,13 +99,17 @@ def move():
         if not inside(target):
             return
 
-    ontimer(move, 50)
+    ontimer(move, s)
 
 
 setup(420, 420, 370, 0)
 hideturtle()
 up()
 tracer(False)
+listen()
+onkey(lambda: changeSpeed(100), 'q')
+onkey(lambda: changeSpeed(50), 'w')
+onkey(lambda: changeSpeed(25), 'e')
 onscreenclick(tap)
 move()
 done()
