@@ -93,7 +93,8 @@ def move():
         if abs(target - ball) > 13:
             targets.append(target)
     draw()
-    "Count balls hit"
+
+    "Count balls hit"                             # ***Exercise 1: count balls hit***
     if len(dupe) != len(targets):
         global count
         diferencia = len(dupe)-len(targets)
@@ -101,7 +102,7 @@ def move():
         style = ('Courier', 30, 'bold')
         write(count, font=style, align='right')
 
-    "Game never ends remove condition"
+    # Game never ends remove condition             # ***Exercise 5: Game never ends***
     #for target in targets:
         #if not inside(target):
             #return
@@ -114,7 +115,7 @@ hideturtle()
 up()
 tracer(False)
 listen()
-onkey(lambda: changeGravity(50), 'a')
+onkey(lambda: changeGravity(50), 'a')           # ***Exercise 2: vary the effect of gravity***
 onkey(lambda: changeGravity(25), 's')
 onkey(lambda: changeGravity(12), 'd')
 onkey(lambda: changeSpeed(100), 'q')
