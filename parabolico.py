@@ -17,13 +17,14 @@ Hernán Salinas Ibarra - A01570409
 Exercises marked by ***ejercicio realizado***
 
 """
-
+"Libraries used"
 from random import randrange
 from turtle import *
 from typing import Sized
 
 from freegames import vector
 
+"Global variables used in game"
 ball = vector(-200, -200)
 speed = vector(0, 0)
 gravity = 25
@@ -33,10 +34,12 @@ count = 0
 
 
 def changeGravity(value):
+    "Set gravity to global variable"
     global gravity
     gravity = value
 
 def changeSpeed(sp):                                # ***Exercise 4: change speed***
+    "Set speed to global variable"
     global s
     s = sp
 
@@ -90,7 +93,7 @@ def move():
         if abs(target - ball) > 13:
             targets.append(target)
     draw()
-    
+    "Count balls hit"
     if len(dupe) != len(targets):
         global count
         diferencia = len(dupe)-len(targets)
@@ -98,9 +101,10 @@ def move():
         style = ('Courier', 30, 'bold')
         write(count, font=style, align='right')
 
-    for target in targets:
-        if not inside(target):
-            return
+    "Game never ends remove condition"
+    #for target in targets:
+        #if not inside(target):
+            #return
 
     ontimer(move, s)
 
