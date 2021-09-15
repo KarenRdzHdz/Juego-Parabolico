@@ -26,13 +26,15 @@ from freegames import vector
 
 ball = vector(-200, -200)
 speed = vector(0, 0)
+gravity = 25
 s = 200
 targets = []
 count = 0
 
 
 def changeGravity(value):
-    speed.y = value / (value/100)
+    global gravity
+    gravity = value
 
 def changeSpeed(sp):                                # ***Exercise 4: change speed***
     global s
@@ -43,8 +45,8 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+        speed.x = (x + 200) / gravity
+        speed.y = (y + 200) / gravity
 
 
 def inside(xy):
@@ -105,13 +107,12 @@ def move():
 
 setup(420, 420, 370, 0)
 hideturtle()
-listen()
-onkey(lambda: changeGravity(400), 'a')
-onkey(lambda: changeGravity(200), 's')
-onkey(lambda: changeGravity(50), 'd')
 up()
 tracer(False)
 listen()
+onkey(lambda: changeGravity(50), 'a')
+onkey(lambda: changeGravity(25), 's')
+onkey(lambda: changeGravity(12), 'd')
 onkey(lambda: changeSpeed(100), 'q')
 onkey(lambda: changeSpeed(50), 'w')
 onkey(lambda: changeSpeed(25), 'e')
