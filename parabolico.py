@@ -30,12 +30,13 @@ s = 200
 targets = []
 count = 0
 
+
+def changeGravity(value):
+    speed.y = value / (value/100)
+
 def changeSpeed(sp):                                # ***Exercise 4: change speed***
     global s
     s = sp
-
-def counting(count):
-    count += 1
 
 def tap(x, y):
     "Respond to screen tap."
@@ -104,6 +105,10 @@ def move():
 
 setup(420, 420, 370, 0)
 hideturtle()
+listen()
+onkey(lambda: changeGravity(400), 'a')
+onkey(lambda: changeGravity(200), 's')
+onkey(lambda: changeGravity(50), 'd')
 up()
 tracer(False)
 listen()
